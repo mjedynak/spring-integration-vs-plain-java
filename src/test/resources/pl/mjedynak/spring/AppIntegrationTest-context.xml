@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <import resource="../../../spring-context.xml"/>
+
+    <bean id="messageRouter" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="pl.mjedynak.spring.MessageRouter"/>
+    </bean>
+    <bean id="XMLHandler" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="pl.mjedynak.spring.XMLHandler"/>
+    </bean>
+    <bean id="JSONHandler" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="pl.mjedynak.spring.JSONHandler"/>
+    </bean>
+    <bean id="persister" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="pl.mjedynak.spring.Persister"/>
+    </bean>
+
+</beans>
