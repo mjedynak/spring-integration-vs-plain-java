@@ -3,6 +3,9 @@ package pl.mjedynak.spring;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kubek2k.springockito.annotations.ReplaceWithMock;
+import org.kubek2k.springockito.annotations.SpringockitoContextLoader;
+import org.kubek2k.springockito.annotations.experimental.DirtiesMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.MessageChannel;
 import org.springframework.integration.support.MessageBuilder;
@@ -14,25 +17,28 @@ import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration
+@ContextConfiguration(loader = SpringockitoContextLoader.class)
+@DirtiesMocks(classMode = DirtiesMocks.ClassMode.AFTER_EACH_TEST_METHOD)
 public class AppIntegrationTest {
 
     @Autowired
     private MessageChannel messageChannel;
 
     @Autowired
+    @ReplaceWithMock
     private MessageRouter messageRouter;
-    @Autowired
-    private JSONHandler jsonHandler;
-    @Autowired
-    private XMLHandler xmlHandler;
-    @Autowired
-    private Persister persister;
 
-    @Before
-    public void resetMocks() {
-        reset(messageRouter, jsonHandler, xmlHandler, persister);
-    }
+    @Autowired
+    @ReplaceWithMock
+    private JSONHandler jsonHandler;
+
+    @Autowired
+    @ReplaceWithMock
+    private XMLHandler xmlHandler;
+
+    @Autowired
+    @ReplaceWithMock
+    private Persister persister;
 
     @Test
     public void shouldRouteToPersisterViaJSONHandler() {

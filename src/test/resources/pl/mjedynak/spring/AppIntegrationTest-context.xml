@@ -7,17 +7,4 @@
 
     <import resource="../../../spring-context.xml"/>
 
-    <bean id="messageRouter" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="pl.mjedynak.spring.MessageRouter"/>
-    </bean>
-    <bean id="XMLHandler" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="pl.mjedynak.spring.XMLHandler"/>
-    </bean>
-    <bean id="JSONHandler" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="pl.mjedynak.spring.JSONHandler"/>
-    </bean>
-    <bean id="persister" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="pl.mjedynak.spring.Persister"/>
-    </bean>
-
 </beans>
